@@ -32,10 +32,6 @@ module.exports = merge(common,{
             new UglifyjsWebpackPlugin({
                 sourceMap:true
             })
-        ],
-        splitChunks:{
-            chunks:'all',
-            name:'manifest'
-        }
+        ]
     }
 });

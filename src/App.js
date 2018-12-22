@@ -1,7 +1,15 @@
 import React from 'react';
+import './style.css';
 
-function App(){
-    return <h1>appa222</h1>
+class App extends React.Component {
+    constructor() {
+        super();
+    }
+    render() {
+        return (
+            <h1>app</h1>
+        )
+    }
 }
 
 export default App;

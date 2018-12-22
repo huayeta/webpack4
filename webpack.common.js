@@ -7,8 +7,8 @@ module.exports = {
         index:'./src/index.js'
     },
     output:{
-        filename:'[name].[chunkhash].js',
-        chunkFilename:'[name].[chunkhash].js',
+        filename:'[name].[hash].js',
+        chunkFilename:'[name].[hash].js',
         path:path.resolve(__dirname,'./dist')
     },
     module:{
@@ -37,7 +37,9 @@ module.exports = {
     plugins:[
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title:'HtmlWebpackPlugin()'
+            title:'react',
+            template:'./src/index.html',
+            chunks:['index']
         })
     ]
 };

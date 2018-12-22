@@ -17,7 +17,11 @@ module.exports = {
                 test:/\.m?js$/,
                 exclude:/(node_modules|bower_components)/,
                 use:{
-                    loader:'babel-loader'
+                    loader:'babel-loader',
+                    options: {
+                        cacheDirectory: true,
+                        cacheCompression: false
+                    }
                 }
             },
             {

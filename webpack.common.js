@@ -45,7 +45,8 @@ module.exports = {
     optimization:{
         splitChunks:{
             chunks:'all',
-            name:'manifest'
+            name:'manifest',
+            minChunks:Infinity
         }
     }
 };

@@ -39,7 +39,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title:'react',
             template:'./src/index.html',
-            chunks:['index']
+            chunks:['index','manifest']
         })
     ],
     optimization:{

@@ -1,11 +1,30 @@
 const path = require('path');
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const entries = {}
+const entriesName = []
+const exportHtmlConfig = []
+glob.sync('./src/pages/*/index.js').forEach(path => {
+    const entryName = path.split('./src/pages/')[1].split('/index.js')[0]
+    entries[entryName] = path
+    entriesName.push(entryName)
+    exportHtmlConfig.push(
+        new HtmlWebpackPlugin({
+            filename: `${entryName}.html`,
+            template: `${path.split('/index.js')[0]}/index.html`,
+            inject: 'body',
+            hash: false,
+            chunks: ['manifest', entryName]
+        })
+    )
+})
+
+console.log(entries);
+
 module.exports = {
-    entry:{
-        index:'./src/index.js'
-    },
+    entry:entries,
     output:{
         filename:'[name].[hash].js',
         chunkFilename:'[name].[hash].js',
@@ -36,9 +55,7 @@ module.exports = {
     },
     plugins:[
         new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
-            title:'HtmlWebpackPlugin()'
-        })
+        ...exportHtmlConfig
     ],
     optimization:{
         splitChunks:{

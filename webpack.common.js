@@ -3,13 +3,11 @@ const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const entries = {}
-const entriesName = []
-const exportHtmlConfig = []
+const entries = {};
+const exportHtmlConfig = [];
 glob.sync('./src/pages/*/index.js').forEach(path => {
     const entryName = path.split('./src/pages/')[1].split('/index.js')[0]
-    entries[entryName] = path
-    entriesName.push(entryName)
+    entries[entryName] = path;
     exportHtmlConfig.push(
         new HtmlWebpackPlugin({
             filename: `${entryName}.html`,

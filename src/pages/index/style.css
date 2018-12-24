@@ -1,9 +1,4 @@
 .hello {
     color: red;
     z-index: 100;
-    display: flex;
-}
-
-.a {
-    background: #000;
 }

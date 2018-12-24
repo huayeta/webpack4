@@ -4,10 +4,21 @@ import './style.css';
 class App extends React.Component {
     constructor() {
         super();
+        this.state={
+            count:1
+        }
+    }
+    handleClick=()=>{
+        this.setState(prevState=>{
+            return {
+                count:++prevState.count
+            }
+        })
     }
     render() {
+        const {count}=this.state;
         return (
-            <h1>app</h1>
+            <h1 onClick={this.handleClick}>{count}</h1>
         )
     }
 }

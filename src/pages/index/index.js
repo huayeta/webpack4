@@ -2,6 +2,11 @@ import {join} from 'lodash';
 import './style.css';
 import myImage from './image.png';
 // import PrientMe from './prientMe';
+import axios from 'axios';
+
+axios.get('/posts').then(res=>{
+    console.log(res.data);
+})
 
 function component(){
     var ele=document.createElement('div');
@@ -13,7 +18,7 @@ function component(){
 
     var image= new Image();
     image.src=myImage;
-    image.width=700;
+    image.width=200;
     ele.appendChild(image);
 
     btn.onclick=(e)=>import('./prientMe.js').then(module=>{

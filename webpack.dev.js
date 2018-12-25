@@ -8,7 +8,10 @@ module.exports = merge(common,{
     devServer:{
         contentBase:'./dist',
         hot:true,
-        disableHostCheck:true
+        disableHostCheck:true,
+        proxy:{
+            '/':'http://localhost:3000'
+        }
     },
     module:{
         rules:[

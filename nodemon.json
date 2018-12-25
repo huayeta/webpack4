@@ -1,0 +1,4 @@
+{
+    "watch":"./jsonServer",
+    "delay":2500
+}

@@ -1,9 +1,9 @@
-const stylelintConfig = require('./stylelint.config');
+// const stylelintConfig = require('./stylelint.config');
 
 module.exports = {
     plugins: [
         require('postcss-import'),
-        require('stylelint')(stylelintConfig),
+        // require('stylelint')(stylelintConfig),
         require('postcss-flexbugs-fixes'),
         require('autoprefixer')({
             autoprefixer: {
@@ -17,7 +17,7 @@ module.exports = {
             unitPrecision: 5,
             viewportUnit: 'vw',
             fontViewportUnit: 'vw',
-            selectorBlackList: [/^\.am-/],
+            selectorBlackList: ['.ignore','.hairlines',/^(?!\.m-mb-)/],
             minPixelValue: 1,
             mediaQuery: false
         })

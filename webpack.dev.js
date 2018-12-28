@@ -10,14 +10,19 @@ module.exports = merge(common,{
         hot:true,
         disableHostCheck:true,
         proxy:{
-            '/':'http://localhost:3000'
+            '/api':'http://localhost:3000'
         }
     },
     module:{
         rules:[
             {
-                test:/\.css$/,
-                use:['style-loader','css-loader','postcss-loader']
+                test:/\.(css|less)$/,
+                use:['style-loader','css-loader','postcss-loader',{
+                    loader:'less-loader',
+                    options:{
+                        javascriptEnabled:true
+                    }
+                }]
             }
         ]
     },

@@ -1,16 +1,24 @@
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
+require('dotenv').config();
+const THEME=process.env.THEME;
 
 module.exports = merge(common,{
     mode:'development',
     devtool:'inline-source-map',
     devServer:{
-        contentBase:'./dist',
+        contentBase:[path.join(__dirname,`./${THEME}-dist`)],
+        compress:true,
+        historyApiFallback:true,
         hot:true,
         disableHostCheck:true,
+        watchContentBase:true,
         proxy:{
-            '/api':'http://localhost:3000'
+            // '/pay/create-order':'http://linkcn.inc:8080'
         }
     },
     module:{
@@ -27,7 +35,10 @@ module.exports = merge(common,{
         ]
     },
     plugins:[
-        new webpack.NamedModulesPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_DEV':JSON.stringify('development')
+        }),
+        new DashboardPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 });
